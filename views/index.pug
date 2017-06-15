@@ -1,0 +1,24 @@
+html
+	head
+		title login
+		link(href='css/materialize.css' type='text/css' rel='stylesheet')
+		link(href='css/materialize.min.css' type='text/css' rel='stylesheet')
+		link(href='css/bootstrap.min.css' type='text/css' rel='stylesheet')
+		link(href='css/bootstrap-theme.min.css' type='text/css' rel='stylesheet')
+	body
+		div(class='container')
+			h3(align='center') Login here!
+			form(method='POST' action='/index')
+				div.jumbotron
+					div.container
+						div.input
+						span.label
+						p username
+						input(class= 'bericht' type="text", name="username" autocomplete="off", placeholder='username', value='terts-teepe')
+						p password
+						input(type="password", name="password", autocomplete="off", minlength='6', placeholder='password', value='weetikniet')
+						br
+						input(class='button' type="submit", value="Login")
+						br
+						br
+						a.waves-effect.waves-light.btn(href='/register') Sign up Here!

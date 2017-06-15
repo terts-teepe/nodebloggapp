@@ -1,0 +1,21 @@
+html
+	head
+		title Register
+		link(href='css/materialize.css' type='text/css' rel='stylesheet')
+		link(href='css/materialize.min.css' type='text/css' rel='stylesheet')
+		link(href='css/bootstrap.min.css' type='text/css' rel='stylesheet')
+		link(href='css/bootstrap-theme.min.css' type='text/css' rel='stylesheet')
+	body
+		div(class='container')
+			h4(align='center') Sign up here!
+			form(method='POST' action='/register')
+				div.jumbotron
+					div.container
+						div.input
+						span.label
+						p username
+						input(class= 'bericht' type="text", name="username" autocomplete="off", placeholder='username')
+						p password
+						input(type="password", name="password", autocomplete="off", minlength='6', placeholder='password')
+						br
+						input(class='button' type="submit", value="Register")

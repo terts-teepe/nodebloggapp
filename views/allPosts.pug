@@ -1,0 +1,43 @@
+html
+	head
+		title allPosts
+		link(href='css/bootstrap.min.css' type='text/css' rel='stylesheet')
+		link(href='css/bootstrap-theme.min.css' type='text/css' rel='stylesheet')
+	body
+		h3(align='center') Everything that has ever posted by anyone! 
+	body
+		.container
+			each post in blogPosts
+				ul.container
+					.jumbotron
+						li
+							em.right Message:
+						.yolo-body
+							em.right title: #{post.title}
+						.yolo-body
+							em.right author: #{post.author}
+						.yolo-body
+							span text: #{post.text}
+						.yolo-body
+							br
+							em.right Comments:
+						each comment in post.comments
+							.yolo-body
+								em.right #{comment.user.username}
+							.yolo-body
+								em.right #{comment.text}
+						.yolo-body
+							form(method='POST', action='/comment')
+								.form-group
+									br
+									input#username.form-control(type='hidden', name='aap', value=post.id)
+								.form-group
+									label Comment Text
+									textarea#text.form-control(type='text', rows='5', name='text', placeholder='Comment here')
+									br
+									input(class='button' type="submit", value="Post Comment")
+		div(class='container', align='center')
+			div.input
+			a.waves-effect.waves-light.btn(href='/logout') Logout
+			a.waves-effect.waves-light.btn(href='/createPost') Postmessage
+			a.waves-effect.waves-light.btn(href='/ownPosts') View Own Posts

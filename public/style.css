@@ -1,0 +1,17 @@
+.container {
+    text-align: center;
+}
+
+h4 {
+	color: red;
+}
+
+.button {
+	margin-top: 20px;
+	background-color: green;
+}
+
+.bericht {
+	height: 150px;
+	width: 400px;
+}

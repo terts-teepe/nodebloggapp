@@ -1,0 +1,29 @@
+html
+	head
+		title createpost
+		link(href='css/materialize.css' type='text/css' rel='stylesheet')
+		link(href='css/materialize.min.css' type='text/css' rel='stylesheet')
+		link(href='css/bootstrap.min.css' type='text/css' rel='stylesheet')
+		link(href='css/bootstrap-theme.min.css' type='text/css' rel='stylesheet')
+	body
+		div(class='container')
+			h3(align='center') Post message here!
+			form(method='POST' action='/createPost')
+				div.jumbotron
+					div.container
+						div.input
+						span.label
+						p title
+						input(class= 'bericht' type="text", name="title" autocomplete="off", placeholder='title')
+						p author
+						input(type="text", name="author", autocomplete="off", placeholder='author')
+						p text
+						input(type="text", name="text", autocomplete="off", minlength='6', placeholder='text')
+						br
+						input(class='button' type="submit", value="Post Message")
+		div(class='container', align='center')
+			div.input
+			a.waves-effect.waves-light.btn(href='/logout') Logout
+			a.waves-effect.waves-light.btn(href='/ownPosts') View Own Posts
+			a.waves-effect.waves-light.btn(href='/allPosts') View All Posts
+
