@@ -18,6 +18,7 @@ const profile = require('./routes/profile');
 const createPost = require('./routes/createPost');
 const ownPosts = require('./routes/ownPosts');
 const comment = require('./routes/comment');
+const bcrypt = require('bcrypt');
 
 // View engine setup
 app.set('views', path.join(__dirname, '/views'));

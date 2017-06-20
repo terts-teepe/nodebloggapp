@@ -1,5 +1,6 @@
 const Sequelize = require('sequelize');
-const connectionString = ('postgres://terts-teepe:weetikniet@localhost:5432/bullitin');
+//const connectionString = ('postgres://terts-teepe:weetikniet@localhost:5432/bullitin');
+const connectionString = ('postgres://' + process.env.POSTGRES_USER + ':' + process.env.POSTGRES_PASSWORD + '@localhost:5432/insomnia');
 const db = new Sequelize(connectionString);
 
 // defining elements of table user

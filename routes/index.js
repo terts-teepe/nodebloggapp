@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const db = require('../models/database.js');
 const bodyParser = require('body-parser');
+const bcrypt = require('bcrypt');
 
 // Render index form
 router.get('/', function(req, res) {
@@ -26,19 +27,18 @@ router.post('/', bodyParser.urlencoded({extended: true}), function (request, res
 	})
 
 	.then(function (user) {
-        if (user !== null && request.body.password === user.password) {
-            request.session.user = user;
-            response.redirect('/profile');
-        }	
-        else {
-            response.redirect('/?message=' + encodeURIComponent("Invalid email or password."));
-        }
-	}, 
-
-    function (error) {
-        response.redirect('/?message=' + encodeURIComponent("Invalid email or password."));
-	})
-});
+        bcrypt.compare(request.body.password, user.password, function (err, hash) {
+            if (hash === true) {
+                request.session.user = user;
+                response.redirect('/profile');
+            }	
+            else {
+                response.redirect('/?message=' + encodeURIComponent("Invalid email or password."));
+            }
+	    }) 
+    })
+})
+    
 
 module.exports = router;
 

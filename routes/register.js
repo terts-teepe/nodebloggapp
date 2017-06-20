@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const db = require('../models/database.js');
 const bodyParser = require('body-parser');
+const bcrypt = require('bcrypt');
 
 
 // Render register form
@@ -23,13 +24,17 @@ router.post('/', function(req, res){
 			// Put alert that username already exist
 		}
 		else {
+			var password = req.body.password
+			bcrypt.hash(req.body.password, 8, (err, hash)=>{
 			db.User.create({
 				username: req.body.username,
-				password: req.body.password
+				password: hash
 			})
-			.then( (user) => {
-				res.redirect('/?message=' + encodeURIComponent("User created"));
-				// Alert that user registered worked
+
+				.then( (user) => {
+					res.redirect('/?message=' + encodeURIComponent("User created"));
+					// Alert that user registered worked
+				})
 			})
 		}
 	})
